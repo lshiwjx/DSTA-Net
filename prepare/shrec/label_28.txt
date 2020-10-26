@@ -1,0 +1,28 @@
+0Grab1
+1Grab5
+2Tap1
+3Tap5
+4Expand1
+5Expand5
+6Pinch1
+7Pinch5
+8Rotation Clockwise1
+9Rotation Clockwise5
+10Rotation Counter Clockwise1
+11Rotation Counter Clockwise5
+12Swipe Right1
+13Swipe Right5
+14Swipe Left1
+15Swipe Left5
+16Swipe Up1
+17Swipe Up5
+18Swipe Down1
+19Swipe Down5
+20Swipe X1
+21Swipe X5
+22Swipe +1
+23Swipe +5
+24Swipe V1
+25Swipe V5
+26Shake1
+27Shake5

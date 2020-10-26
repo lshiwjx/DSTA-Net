@@ -1,0 +1,87 @@
+data: 'shrec_skeleton'
+data_param:
+  train_data_param:
+    data_path: /home/lshi/Database/shrec_hand/train_skeleton.pkl
+    label_path: /home/lshi/Database/shrec_hand/train_label_14.pkl
+#    data_path: /home/lshi/Database/dhg_hand_shrec/train_skeleton_ddnet.pkl
+#    label_path: /home/lshi/Database/dhg_hand_shrec/train_label_ddnet_14.pkl
+    random_choose: True
+    center_choose: False
+    window_size: 150
+    final_size: 128
+    num_skip_frame: 1
+    decouple_spatial: False
+  val_data_param:
+    data_path: /home/lshi/Database/shrec_hand/val_skeleton.pkl
+    label_path: /home/lshi/Database/shrec_hand/val_label_14.pkl
+#    data_path: /home/lshi/Database/dhg_hand_shrec/val_skeleton_ddnet.pkl
+#    label_path: /home/lshi/Database/dhg_hand_shrec/val_label_ddnet_14.pkl
+    random_choose: False
+    center_choose: True
+    window_size: 150
+    final_size: 128
+    num_skip_frame: 1
+    decouple_spatial: False
+
+# model
+model: 'dstanet'
+class_num: 14
+model_param:
+  num_point: 22
+  num_frame: 128
+  num_subset: 3
+  num_person: 1
+  glo_reg_s: True
+  att_s: True
+  glo_reg_t: False
+  att_t: True
+  dropout: 0
+  attentiondrop: 0
+  dropout2d: 0
+  config: [ [64, 64, 16, 1], [64, 64, 16, 1],
+            [64, 128, 32, 2], [128, 128, 32, 1],
+            [128, 256, 64, 2], [256, 256, 64, 1],
+            [256, 256, 64, 1], [256, 256, 64, 1],
+  ]
+  use_spatial_att: True
+  use_temporal_att: True
+  use_pet: True
+  use_pes: True
+
+
+train: 'classify'
+mode: 'train_val'
+loss: 'cross_entropy'
+batch_size: 32
+worker: 32
+pin_memory: False
+num_epoch_per_save: 100
+model_saved_name: './work_dir/shrec14/dstanet_drop0_6090120_128_T1'
+last_model: './work_dir/shrec14/dstanet_drop0_6090120_128_T1-119-7320.state'
+pre_trained_model:
+ignore_weights: []
+label_smoothing_num: 0
+mix_up_num: 0
+device_id: [0]
+cuda_visible_device: '0'
+debug: True
+
+# lr
+lr_scheduler: 'reduce_by_epoch'
+lr_param:
+  step: [60, 90]
+  gamma: 0.1
+#  lr_patience: 20
+#  lr_threshold: 0.0001
+#  lr_delay: 10
+warm_up_epoch: 5
+max_epoch: 120
+lr: 0.1
+wd: 0.0005
+lr_decay_ratio: 0.1
+lr_multi_keys: []
+
+# optimizer
+optimizer: 'sgd_nev'
+freeze_keys: []
+
