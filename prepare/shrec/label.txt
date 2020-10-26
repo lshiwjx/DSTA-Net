@@ -1,0 +1,14 @@
+0Grab
+1Tap
+2Expand
+3Pinch
+4Rotation Clockwise
+5Rotation Counter Clockwise
+6Swipe Right
+7Swipe Left
+8Swipe Up
+9Swipe Down
+10Swipe X
+11Swipe +
+12Swipe V
+13Shake

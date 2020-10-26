@@ -1,0 +1,25 @@
+1-base of the spine
+2-middle of the spine
+3-neck
+4-head
+5-left shoulder
+6-left elbow
+7-left wrist
+8-left hand
+9-right shoulder
+10-right elbow
+11-right wrist
+12-right hand
+13-left hip
+14-left knee
+15-left ankle
+16-left foot
+17-right hip
+18-right knee
+19-right ankle
+20-right foot
+21-spine
+22-tip of the left hand
+23-left thumb
+24-tip of the right hand
+25-right thumb
