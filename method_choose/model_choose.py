@@ -5,11 +5,6 @@ from collections import OrderedDict
 import shutil
 import inspect
 from model.dstanet import DSTANet
-from model.dstanet_a import DSTANet_A
-from model.dstanet_b import DSTANet_B
-from model.dstanet_ctc import DSTANetCTC
-from model.resnet3d import ResNetXt1013d
-from model.inceptionv1 import I3D
 
 
 def rm_module(old_dict):
@@ -29,21 +24,6 @@ def model_choose(args, block):
     if m == 'dstanet':
         model = DSTANet(num_class=args.class_num, **args.model_param)
         shutil.copy2(inspect.getfile(DSTANet), args.model_saved_name)
-    elif m == 'dstanet_a':
-        model = DSTANet_A(num_class=args.class_num, **args.model_param)
-        shutil.copy2(inspect.getfile(DSTANet_A), args.model_saved_name)
-    elif m == 'dstanet_b':
-        model = DSTANet_B(num_class=args.class_num, **args.model_param)
-        shutil.copy2(inspect.getfile(DSTANet_B), args.model_saved_name)
-    elif m == 'dstanet_ctc':
-        model = DSTANetCTC(num_class=args.class_num+1, **args.model_param)
-        shutil.copy2(inspect.getfile(DSTANetCTC), args.model_saved_name)
-    elif m == 'resnext101':
-        model = ResNetXt1013d(args.class_num)
-        shutil.copy2(inspect.getfile(ResNetXt1013d), args.model_saved_name)
-    elif m == 'i3d':
-        model = I3D(num_classes=args.class_num)
-        shutil.copy2(inspect.getfile(I3D), args.model_saved_name)
     else:
         raise (RuntimeError("No modules"))
 

@@ -43,9 +43,9 @@ def test(data_path, label_path, vid=None, edge=None, is_3d=False, mode='train'):
 
 
 if __name__ == '__main__':
-    data_path = "/home/lshi/Database/shrec_hand/train_skeleton.pkl"
-    label_path = "/home/lshi/Database/shrec_hand/train_label_28.pkl"
-    # data_path = "/home/lshi/Database/dhg_hand_shrec/train_skeleton_ddnet.pkl"
-    # label_path = "/home/lshi/Database/dhg_hand_shrec/train_label_ddnet_14.pkl"
+    data_path = "/your/path/to/shrec_hand/train_skeleton.pkl"
+    label_path = "/your/path/to/shrec_hand/train_label_28.pkl"
+    # data_path = "/your/path/to/dhg_hand_shrec/train_skeleton_ddnet.pkl"
+    # label_path = "/your/path/to/dhg_hand_shrec/train_label_ddnet_14.pkl"
     # test(data_path, label_path, vid=1, edge=edge, is_3d=True, mode='train')
     test(data_path, label_path, vid='14_2_27_5', edge=edge, is_3d=True, mode='train')

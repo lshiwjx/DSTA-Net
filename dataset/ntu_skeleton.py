@@ -47,9 +47,9 @@ def test(data_path, label_path, vid=None, edge=None, is_3d=False, mode='train'):
 
 
 if __name__ == '__main__':
-    data_path = "/home/lshi/Database/ntu_lshi_pre/xsub/val_data_joint.npy"
-    label_path = "/home/lshi/Database/ntu_lshi_pre/xsub/val_label.pkl"
+    data_path = "/your/path/to/ntu/xsub/val_data_joint.npy"
+    label_path = "/your/path/to/ntu/xsub/val_label.pkl"
     test(data_path, label_path, vid='S004C001P003R001A032', edge=edge, is_3d=True, mode='train')
-    # data_path = "/home/lshi/Database/ntu_lshipre_120/xsub/val_data_joint.npy"
-    # label_path = "/home/lshi/Database/ntu_lshipre_120/xsub/val_label.pkl"
+    # data_path = "/your/path/to/ntu/xsub/val_data_joint.npy"
+    # label_path = "/your/path/to/ntu/xsub/val_label.pkl"
     # test(data_path, label_path, vid='S004C001P003R001A032', edge=edge, is_3d=True, mode='train')

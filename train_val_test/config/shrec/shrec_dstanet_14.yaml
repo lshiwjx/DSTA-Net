@@ -1,27 +1,23 @@
 data: 'shrec_skeleton'
 data_param:
   train_data_param:
-    data_path: /home/lshi/Database/shrec_hand/train_skeleton.pkl
-    label_path: /home/lshi/Database/shrec_hand/train_label_14.pkl
-#    data_path: /home/lshi/Database/dhg_hand_shrec/train_skeleton_ddnet.pkl
-#    label_path: /home/lshi/Database/dhg_hand_shrec/train_label_ddnet_14.pkl
+    data_path: /your/path/to/shrec_hand/train_skeleton.pkl
+    label_path: /your/path/to/shrec_hand/train_label_14.pkl
     random_choose: True
     center_choose: False
     window_size: 150
     final_size: 128
     num_skip_frame:
-    decouple_spatial: True
+    decouple_spatial: False
   val_data_param:
-    data_path: /home/lshi/Database/shrec_hand/val_skeleton.pkl
-    label_path: /home/lshi/Database/shrec_hand/val_label_14.pkl
-#    data_path: /home/lshi/Database/dhg_hand_shrec/val_skeleton_ddnet.pkl
-#    label_path: /home/lshi/Database/dhg_hand_shrec/val_label_ddnet_14.pkl
+    data_path: /your/path/to/shrec_hand/val_skeleton.pkl
+    label_path: /your/path/to/shrec_hand/val_label_14.pkl
     random_choose: False
     center_choose: True
     window_size: 150
     final_size: 128
     num_skip_frame:
-    decouple_spatial: True
+    decouple_spatial: False
 
 # model
 model: 'dstanet'
@@ -56,7 +52,7 @@ batch_size: 32
 worker: 32
 pin_memory: False
 num_epoch_per_save: 100
-model_saved_name: './work_dir/shrec14/dstanet_drop0_6090120_128_S'
+model_saved_name: './work_dir/shrec14/dstanet_drop0_6090120_128'
 last_model:
 pre_trained_model:
 ignore_weights: []

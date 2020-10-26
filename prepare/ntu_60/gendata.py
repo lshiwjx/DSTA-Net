@@ -267,10 +267,10 @@ def ske_vis(data, **kwargs):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='NTU-RGB-D Data Converter.')
-    parser.add_argument('--data_path', default='/home/lshi/Database/ntu_60_raw/nturgb+d_skeletons')
+    parser.add_argument('--data_path', default='/your/path/to/ntu_60_raw/nturgb+d_skeletons')
     parser.add_argument('--ignored_sample_path',
-                        default='/home/lshi/Database/ntu_60_raw/samples_with_missing_skeletons.txt')
-    parser.add_argument('--out_folder', default='/home/lshi/Database/ntu_60/')
+                        default='/your/path/to/ntu_60_raw/samples_with_missing_skeletons.txt')
+    parser.add_argument('--out_folder', default='/your/path/to/ntu_60/')
 
     benchmark = ['xsub', 'xview']
     part = ['train', 'val']

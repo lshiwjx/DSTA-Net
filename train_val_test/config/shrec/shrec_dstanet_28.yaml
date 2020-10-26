@@ -1,23 +1,23 @@
 data: 'shrec_skeleton'
 data_param:
   train_data_param:
-    data_path: /home/lshi/Database/shrec_hand/train_skeleton.pkl
-    label_path: /home/lshi/Database/shrec_hand/train_label_28.pkl
+    data_path: /your/path/to/shrec_hand/train_skeleton.pkl
+    label_path: /your/path/to/shrec_hand/train_label_28.pkl
     random_choose: True
     center_choose: False
     window_size: 150
     final_size: 128
-#    num_skip_frame: 1
-#    decouple_spatial: False
+    num_skip_frame:
+    decouple_spatial: False
   val_data_param:
-    data_path: /home/lshi/Database/shrec_hand/val_skeleton.pkl
-    label_path: /home/lshi/Database/shrec_hand/val_label_28.pkl
+    data_path: /your/path/to/shrec_hand/val_skeleton.pkl
+    label_path: /your/path/to/shrec_hand/val_label_28.pkl
     random_choose: False
     center_choose: True
     window_size: 150
     final_size: 128
-#    num_skip_frame: 1
-#    decouple_spatial: False
+    num_skip_frame:
+    decouple_spatial: False
 
 # model
 model: 'dstanet'

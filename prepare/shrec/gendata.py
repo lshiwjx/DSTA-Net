@@ -26,7 +26,7 @@ def read_skeleton(ske_txt):
 
 
 def gendata():
-    root = '/home/lshi/Database/shrec_hand/'
+    root = '/your/path/to/shrec_hand/'
     train_split = open(os.path.join(root, 'train_gestures.txt'), 'r').readlines()
     val_split = open(os.path.join(root, 'test_gestures.txt'), 'r').readlines()
 

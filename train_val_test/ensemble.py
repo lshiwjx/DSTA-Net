@@ -5,13 +5,13 @@ import numpy as np
 from tqdm import tqdm
 
 parser = argparse.ArgumentParser()
-parser.add_argument('--label', default='/home/lshi/Database/ntu_60/xsub/val_label.pkl',
+parser.add_argument('--label', default='/your/path/to/ntu_60/xsub/val_label.pkl',
                     help='')
 parser.add_argument('--spatial_temporal', default='./work_dir/ntu60/dstanet_drop0_6090120_128_ST')
 parser.add_argument('--spatial', default='./work_dir/ntu60/dstanet_drop0_6090120_128_S')
 parser.add_argument('--temporal_slow', default='./work_dir/ntu60/dstanet_drop0_6090120_128_T1')
-parser.add_argument('--temporal_fast', default='./work_dir/ntu60/i3d_101520')
-parser.add_argument('--alpha', default=[1, 1, 1, 3], help='weighted summation')
+parser.add_argument('--temporal_fast', default='./work_dir/ntu60/dstanet_drop0_6090120_128_T1')
+parser.add_argument('--alpha', default=[1, 1, 1, 1], help='weighted summation')
 arg = parser.parse_args()
 
 label = open(arg.label, 'rb')

@@ -24,7 +24,7 @@ def read_skeleton(ske_txt):
 
 
 def gendata():
-    root = '/home/lshi/Database/dhg_hand/'
+    root = '/your/path/to/dhg_hand/'
     split_txt = 'informations_troncage_sequences.txt'
     split = open(os.path.join(root, split_txt), 'r').readlines()
     num_sub = 20

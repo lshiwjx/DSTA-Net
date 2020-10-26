@@ -11,21 +11,14 @@ from easydict import EasyDict as ed
 def parser_args(block):
     # params
     parser = argparse.ArgumentParser()
-    parser.add_argument('-config',
-                        default='./config/agcnv2/val/shrec_agcnattention.yaml')
-    # resnet3d_18 resnet3d_34 resnetxt3d_101 inception_resnet_v2_3d inceptionv13d c3d pnas nasmobile bninception
-    # parser.add_argument('-model', default='resnet_101')
+    parser.add_argument('-config', default='')
     parser.add_argument('-model', default='resnet3d_50')
     parser.add_argument('-model_param', default={}, help=None)
     # classify_multi_crop classify classify_pose
     parser.add_argument('-train', default='classify')
     parser.add_argument('-val_first', default=False)
-    # ego cifar10 char ucf jester jester_multi some kinetics ucf_tworandom ucf_flow emotion moments_video meituimg epicaudio pennagulp
     parser.add_argument('-data', default='jmdbgulp')
-    parser.add_argument('-data_param', default={
-        'part': '1', 'mean': (0.5, 0.5, 0.5), 'final_shape': (32, 224, 224), 'resize_shape': (40, 256, 256),
-        'use_flip': (0, 0, 0), 'root': '/home/lshi/Database/subjmdb/', 'crop': 'crop', 'size': 'small'
-    }, help='/mnt/xfs1/home/shilei/Database/ntu_rgb/ /pennaction/Penn_Action  subjmdb')
+    parser.add_argument('-data_param', default={}, help='')
     # train_val test train_test
     parser.add_argument('-mode', default='train_val')
     # cross_entropy mse_ce
@@ -34,8 +27,7 @@ def parser_args(block):
     })
     # reduce_by_acc reduce_by_loss reduce_by_epoch cosine_annealing_lr
     parser.add_argument('-lr_scheduler', default='reduce_by_acc')
-    parser.add_argument('-lr_param', default={
-    })
+    parser.add_argument('-lr_param', default={})
     parser.add_argument('-warm_up_epoch', default=0)
     parser.add_argument('-step', default=[80, ])
     parser.add_argument('-lr', default=0.01)  # 0.001
@@ -44,45 +36,25 @@ def parser_args(block):
     parser.add_argument('-lr_multi_keys', default=[
         ['fc', 1, 1, 0], ['bn', 1, 1, 0],
     ], help='key, lr ratio, wd ratio, epoch')
-    # adam sgd sgd_nev
     parser.add_argument('-optimizer', default='sgd_nev')
-    # parser.add_argument('--only_train_epoch', default=0)
-    # parser.add_argument('-only_train_classifier', default=False)
     parser.add_argument('-freeze_keys', default=[
         ['PA', 5],
     ], help='key, epoch')
 
-    # 83 10 249 101 27 174 339 50 63 epic125 352 ntu60 penna15 jmdb21
     parser.add_argument('-class_num', default=12)
-    parser.add_argument('-batch_size', default=32)  # 56 98eg 180ki
+    parser.add_argument('-batch_size', default=32)
     parser.add_argument('-worker', default=16)
     parser.add_argument('-pin_memory', default=False)
     parser.add_argument('-max_epoch', default=50)
 
     parser.add_argument('-num_epoch_per_save', default=2)
-    parser.add_argument('-model_saved_name', default='./runs/subjmdb12_res50_32224_001')
-    # parser.add_argument('-model_saved_name', default='./runs/epic_video_rext101_noun_flow_again')
-
-    # parser.add_argument('-use_last_model', default=False)
-    parser.add_argument('-last_model',
-                        default=None,
-                        help='./runs/ntu_xsub_icp1_32224_001_full-31-40064.state')  # epic_video_rext101_verb_again-75-102296.state epic_video_rext101_noun-50-50500.state
-    parser.add_argument('-ignore_weights',
-                        default=['fc', 'data_bn', 'Attention', 'conv_sa', 'PA', 'conv_ta', 'pre_net'])
-    # parser.add_argument('-use_pre_trained_model', default=True)
-    # parser.add_argument('-pre_class_num', default=21)
-    # /home/lshi/Model/3dmodel/inception3d_v1_flow_kinetics.state inception3d_v1_kinetics.state resnet3d_101_kinetics ego_res34_kpre_32f-35940
-    # kinetics_resnext101_64120-408606.state
-    # ipre_inceptionrv2_kinetics_-255136.state
-    parser.add_argument('-pre_trained_model',
-                        default='/home/lshi/Model/3dmodel/i3d_r50_kinetics.pth')  # i3d_r50_kinetics.pth inception3d_v1_kinetics.state
-    # parser.add_argument('-pre_trained_model',
-    #                     default='./runs/epic_audio_pnas_noun-24224.state')
-
+    parser.add_argument('-model_saved_name', default='')
+    parser.add_argument('-last_model', default=None, help='')
+    parser.add_argument('-ignore_weights', default=['fc'])
+    parser.add_argument('-pre_trained_model', default='')
     parser.add_argument('--label_smoothing_num', default=0, help='0-1: 0 denotes no smoothing')
     parser.add_argument('--mix_up_num', default=0, help='0-1: 1 denotes uniform distribution, smaller, more concave')
     parser.add_argument('-device_id', default=[0, 1, 2, 3])
-    # parser.add_argument('-device_id', default=[0, 1, 2, 3, 4, 5, 6, 7])
     parser.add_argument('-debug', default=False)
     parser.add_argument('-cuda_visible_device', default='0, 1, 2, 3, 4, 5, 6, 7')
     parser.add_argument('-grad_clip', default=0)
@@ -136,4 +108,3 @@ def parser_args(block):
 
     args = ed(vars(args))
     return args
-

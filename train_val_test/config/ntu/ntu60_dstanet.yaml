@@ -1,8 +1,8 @@
 data: 'ntu_skeleton'
 data_param:
   train_data_param:
-    data_path: /home/lshi/Database/ntu_60/xsub/train_data_joint.npy
-    label_path: /home/lshi/Database/ntu_60/xsub/train_label.pkl
+    data_path: /your/path/to/ntu_60/xsub/train_data_joint.npy
+    label_path: /your/path/to/ntu_60/xsub/train_label.pkl
     random_choose: True
     center_choose: False
     window_size: 150
@@ -10,8 +10,8 @@ data_param:
     num_skip_frame:
     decouple_spatial: False
   val_data_param:
-    data_path: /home/lshi/Database/ntu_60/xsub/val_data_joint.npy
-    label_path: /home/lshi/Database/ntu_60/xsub/val_label.pkl
+    data_path: /your/path/to/ntu_60/xsub/val_data_joint.npy
+    label_path: /your/path/to/ntu_60/xsub/val_label.pkl
     random_choose: False
     center_choose: True
     window_size: 150
@@ -52,7 +52,7 @@ batch_size: 32
 worker: 32
 pin_memory: False
 num_epoch_per_save: 200
-model_saved_name: './work_dir/ntu60/dstaneta_drop0_6090120_128'
+model_saved_name: './work_dir/ntu60/dstanet_drop0_6090120_128'
 last_model:
 pre_trained_model:
 ignore_weights: ['fc']

@@ -46,8 +46,7 @@ def rm_module(old_dict):
 with TimerBlock("Good Luck") as block:
     # params
     args = parser_args.parser_args(block)
-    # args = parser_args.parser_pose_args(block)
-    # args = parser_flownet_args()
+
     init_seed(1)
     setproctitle.setproctitle(args.model_saved_name)
 

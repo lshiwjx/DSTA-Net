@@ -10,11 +10,7 @@ import random
 import shutil
 import inspect
 from dataset.ntu_skeleton import NTU_SKE
-from dataset.fpha_skeleton import FPHA_SKE
 from dataset.dhg_skeleton import DHG_SKE
-from dataset.rgb import RGB
-from dataset.rgb_gulp import RGBGULP
-from easydict import EasyDict as edict
 
 
 def init_seed(x):
@@ -49,10 +45,6 @@ def data_choose(args, block):
             workers = args.worker
             data_set_train = NTU_SKE(mode='train', **args.data_param['train_data_param'])
             data_set_val = NTU_SKE(mode='val', **args.data_param['val_data_param'])
-        elif args.data == 'fpha_skeleton':
-            workers = args.worker
-            data_set_train = FPHA_SKE(mode='train', **args.data_param['train_data_param'])
-            data_set_val = FPHA_SKE(mode='val', **args.data_param['val_data_param'])
         elif args.data == 'dhg_skeleton':
             workers = args.worker
             data_set_train = DHG_SKE(mode='train', **args.data_param['train_data_param'])
@@ -61,14 +53,6 @@ def data_choose(args, block):
             workers = args.worker
             data_set_train = DHG_SKE(mode='train', **args.data_param['train_data_param'])
             data_set_val = DHG_SKE(mode='val', **args.data_param['val_data_param'])
-        elif args.data == 'rgb':
-            workers = args.worker
-            data_set_train = RGB(mode='train', arg=edict(args.data_param['train_data_param']))
-            data_set_val = RGB(mode='val', arg=edict(args.data_param['val_data_param']))
-        elif args.data == 'rgbgulp':
-            workers = args.worker
-            data_set_train = RGBGULP(mode='train', arg=edict(args.data_param['train_data_param']))
-            data_set_val = RGBGULP(mode='val', arg=edict(args.data_param['val_data_param']))
         else:
             raise (RuntimeError('No data loader'))
         data_loader_val = DataLoader(data_set_val, batch_size=args.batch_size, shuffle=False,

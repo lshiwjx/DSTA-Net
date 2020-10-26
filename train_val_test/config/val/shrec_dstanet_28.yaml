@@ -1,10 +1,8 @@
 data: 'shrec_skeleton'
 data_param:
   train_data_param:
-    data_path: /home/lshi/Database/shrec_hand/train_skeleton.pkl
-    label_path: /home/lshi/Database/shrec_hand/train_label_14.pkl
-#    data_path: /home/lshi/Database/dhg_hand_shrec/train_skeleton_ddnet.pkl
-#    label_path: /home/lshi/Database/dhg_hand_shrec/train_label_ddnet_14.pkl
+    data_path: /your/path/to/shrec_hand/train_skeleton.pkl
+    label_path: /your/path/to/shrec_hand/train_label_28.pkl
     random_choose: True
     center_choose: False
     window_size: 150
@@ -12,10 +10,8 @@ data_param:
     num_skip_frame:
     decouple_spatial: False
   val_data_param:
-    data_path: /home/lshi/Database/shrec_hand/val_skeleton.pkl
-    label_path: /home/lshi/Database/shrec_hand/val_label_14.pkl
-#    data_path: /home/lshi/Database/dhg_hand_shrec/val_skeleton_ddnet.pkl
-#    label_path: /home/lshi/Database/dhg_hand_shrec/val_label_ddnet_14.pkl
+    data_path: /your/path/to/shrec_hand/val_skeleton.pkl
+    label_path: /your/path/to/shrec_hand/val_label_28.pkl
     random_choose: False
     center_choose: True
     window_size: 150
@@ -24,8 +20,8 @@ data_param:
     decouple_spatial: False
 
 # model
-model: 'dstanet_ctc'
-class_num: 14
+model: 'dstanet'
+class_num: 28
 model_param:
   num_point: 22
   num_frame: 128
@@ -51,25 +47,20 @@ model_param:
 
 train: 'classify'
 mode: 'train_val'
+loss: 'cross_entropy'
 batch_size: 32
-worker: 0
+worker: 32
 pin_memory: False
 num_epoch_per_save: 100
-model_saved_name: './work_dir/shrec14/dstanet_drop0_6090120_128_ctc'
-last_model: './work_dir/shrec14/dstanet_drop0_6090120_128_ctc-latest.state'
-pre_trained_model: './work_dir/shrec14/dstanet_drop0_6090120_128-119-7320.state'
-ignore_weights: ['fc']
+model_saved_name: './work_dir/val/shrec28/dstanet_drop0_6090120_128'
+last_model: './work_dir/shrec28/dstanet_drop0_6090120_128-latest.state'
+pre_trained_model:
+ignore_weights: []
 label_smoothing_num: 0
 mix_up_num: 0
 device_id: [0]
-cuda_visible_device: '5'
+cuda_visible_device: '0'
 debug: False
-
-loss: 'ctc'
-ls_param:
-  target_len: 1
-  input_len: 32
-#  blank: 14
 
 # lr
 lr_scheduler: 'reduce_by_epoch'
@@ -79,10 +70,10 @@ lr_param:
 #  lr_patience: 20
 #  lr_threshold: 0.0001
 #  lr_delay: 10
-warm_up_epoch: 0
+warm_up_epoch: 5
 max_epoch: 120
-lr: 0.01
-wd: 0.0001
+lr: 0.1
+wd: 0.0005
 lr_decay_ratio: 0.1
 lr_multi_keys: []
 
@@ -90,5 +81,3 @@ lr_multi_keys: []
 optimizer: 'sgd_nev'
 freeze_keys: []
 
-val_first: False
-#grad_clip: 20

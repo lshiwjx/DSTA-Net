@@ -21,10 +21,10 @@ channel_name = ['x', 'y', 'z', 'colorX', 'colorY']
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='NTU-RGB-D Data Converter.')
-    parser.add_argument('--data_path', default='/home/lshi/Database/ntu_120_raw/')
+    parser.add_argument('--data_path', default='/your/path/to/ntu_120_raw/')
     parser.add_argument('--ignored_sample_path',
-                        default='/home/lshi/Database/ntu_120_raw/samples_with_missing_skeletons_120.txt')
-    parser.add_argument('--out_folder', default='/home/lshi/Database/ntu_120/')
+                        default='/your/path/to/ntu_120_raw/samples_with_missing_skeletons_120.txt')
+    parser.add_argument('--out_folder', default='/your/path/to/ntu_120/')
 
     benchmark = ['xset', 'xsub']
     part = ['train', 'val']

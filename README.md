@@ -1,12 +1,15 @@
 # DSTA-Net
 Decoupled Spatial-Temporal Attention Network for Skeleton-Based Action-Gesture Recognition in ACCV2020
 
-# Note
+# Result
+A little different with paper due the reimplementation.
 
+ - NTU-60-CS: ~91.8%
+ - SHREC-14: ~97.2%
 
 # Data Preparation
 
- - SHREC/DHG
+ - SHREC
     - Download the SHREC data from http://www-rech.telecom-lille.fr/shrec2017-hand/
     - Generate the train/test splits with `python prepare/shrec/gendata.py`
  - DHG
@@ -26,31 +29,22 @@ Decoupled Spatial-Temporal Attention Network for Skeleton-Based Action-Gesture R
 Change the config file depending on what you want.
 
     `python train_val_test/train.py --config ./config/shrec/shrec_dstanet_14.yaml`
+
+Train with decoupled modalities by changing the 'num_skip_frame'(None to 1 or 2) option and 'decouple_spatial'(False to True) option in config file and train again. 
     
-To ensemble the results of joints and bones, run test firstly to generate the scores of the softmax layer. 
-
-    `python train_val_test/eval.py --config ./config/val/shrec_dstanet_14.yaml`
-
 Then combine the generated scores with: 
 
-    `python train_val_test/train.py --datasets ntu/xview`
+    `python train_val_test/ensemble.py`
      
 # Citation
 Please cite the following paper if you use this repository in your reseach.
 
-    @inproceedings{2sagcn2019cvpr,  
-          title     = {Two-Stream Adaptive Graph Convolutional Networks for Skeleton-Based Action Recognition},  
+    @inproceedings{dstanet_accv2020,  
+          title     = {Decoupled Spatial-Temporal Attention Network for Skeleton-Based Action-Gesture Recognition},  
           author    = {Lei Shi and Yifan Zhang and Jian Cheng and Hanqing Lu},  
-          booktitle = {CVPR},  
-          year      = {2019},  
+          booktitle = {ACCV},  
+          year      = {2020},  
     }
     
-    @article{shi_skeleton-based_2019,
-        title = {Skeleton-{Based} {Action} {Recognition} with {Multi}-{Stream} {Adaptive} {Graph} {Convolutional} {Networks}},
-        journal = {arXiv:1912.06971 [cs]},
-        author = {Shi, Lei and Zhang, Yifan and Cheng, Jian and LU, Hanqing},
-        month = dec,
-        year = {2019},
-	}
 # Contact
 For any questions, feel free to contact: `lei.shi@nlpr.ia.ac.cn`

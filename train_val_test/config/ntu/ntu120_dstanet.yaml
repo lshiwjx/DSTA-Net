@@ -1,39 +1,27 @@
-data: 'skeleton'
+data: 'ntu_skeleton'
 data_param:
   train_data_param:
-#    data_path: /home/lshi/Database/ntu_lshipre_120/xsub/train_data_joint.npy
-#    label_path: /home/lshi/Database/ntu_lshipre_120/xsub/train_label.pkl
-    data_path: /home/lshi/Database/ntu_lshipre_120/xset/train_data_joint.npy
-    label_path: /home/lshi/Database/ntu_lshipre_120/xset/train_label.pkl
+    data_path: /your/path/to/ntu_120/xsub/train_data_joint.npy
+    label_path: /your/path/to/ntu_120/xsub/train_label.pkl
     random_choose: True
     center_choose: False
-    window_size: 300
+    window_size: 150
     final_size: 128
-#    decouple_spatial: True
-    num_skip_frame: 4
-#    edges: [[0, 1], [1, 20], [2, 20], [3, 2], [4, 20], [5, 4], [6, 5],
-#            [7, 6], [8, 20], [9, 8], [10, 9], [11, 10], [12, 0],
-#            [13, 12], [14, 13], [15, 14], [16, 0], [17, 16], [18, 17],
-#            [19, 18], [21, 22], [22, 7], [23, 24], [24, 11]]
+    num_skip_frame:
+    decouple_spatial: False
   val_data_param:
-#    data_path: /home/lshi/Database/ntu_lshipre_120/xsub/val_data_joint.npy
-#    label_path: /home/lshi/Database/ntu_lshipre_120/xsub/val_label.pkl
-    data_path: /home/lshi/Database/ntu_lshipre_120/xset/val_data_joint.npy
-    label_path: /home/lshi/Database/ntu_lshipre_120/xset/val_label.pkl
+    data_path: /your/path/to/ntu_120/xsub/val_data_joint.npy
+    label_path: /your/path/to/ntu_120/xsub/val_label.pkl
     random_choose: False
     center_choose: True
-    window_size: 300
+    window_size: 150
     final_size: 128
-#    decouple_spatial: True
-    num_skip_frame: 4
-#    edges: [[0, 1], [1, 20], [2, 20], [3, 2], [4, 20], [5, 4], [6, 5],
-#            [7, 6], [8, 20], [9, 8], [10, 9], [11, 10], [12, 0],
-#            [13, 12], [14, 13], [15, 14], [16, 0], [17, 16], [18, 17],
-#            [19, 18], [21, 22], [22, 7], [23, 24], [24, 11]]
+    num_skip_frame:
+    decouple_spatial: False
 
 # model
-model: 'dstanet'
-class_num: 120
+model: 'dstanet_a'
+class_num: 60
 model_param:
   num_point: 25
   num_frame: 128
@@ -63,22 +51,21 @@ loss: 'cross_entropy'
 batch_size: 32
 worker: 32
 pin_memory: False
-num_epoch_per_save: 50
-model_saved_name: './agcnv2/ntu120/ntu120lshifullbody_xset_agcnattentionnew_atts02_attk7t_t128_l8dgnn_6912_lr01_v4'
+num_epoch_per_save: 200
+model_saved_name: './work_dir/ntu120/dstanet_drop0_6090120_128'
 last_model:
 pre_trained_model:
 ignore_weights: ['fc']
 label_smoothing_num: 0
 mix_up_num: 0
 device_id: [0]
-cuda_visible_device: '3'
+cuda_visible_device: '6'
 debug: False
 
 # lr
 lr_scheduler: 'reduce_by_epoch'
 lr_param:
   step: [60, 90]
-  gamma: 0.1
 #  lr_patience: 10
 #  lr_threshold: 0.0001
 #  lr_delay: 0
